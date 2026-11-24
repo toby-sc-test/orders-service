@@ -1,0 +1,7 @@
+replicaCount: 2
+image:
+  tag: "1.4.2"
+cache:
+  url: "rediss://orders-cache.internal:6380"
+queue:
+  url: amqp://orders-mq.internal:5672

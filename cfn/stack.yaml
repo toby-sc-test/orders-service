@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters:
+  EngineVersion:
+    Type: String
+    Default: "8.0.32"
+Resources:
+  OrdersDb:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Snapshot
+    Properties:
+      Engine: mysql
+      EngineVersion: !Ref EngineVersion
+      MultiAZ: true
+      BackupRetentionPeriod: 7
+      DeletionProtection: true
+  OrdersQueue:
+    Type: AWS::SQS::Queue
+  OrdersFn:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: !Sub "nodejs${NodeMajor}.x"
+      Role: !GetAtt FnRole.Arn
+  OrdersListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      Protocol: HTTPS
+      SslPolicy: ELBSecurityPolicy-TLS13-1-2-2021-06

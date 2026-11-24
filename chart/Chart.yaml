@@ -1,0 +1,7 @@
+apiVersion: v2
+name: orders
+version: 0.3.0
+dependencies:
+  - name: redis
+    version: "17.11.3"
+    repository: https://charts.bitnami.com/bitnami

@@ -1,0 +1,11 @@
+{
+  "Resources": {
+    "OrdersTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "DeletionProtectionEnabled": false,
+        "PointInTimeRecoverySpecification": {"PointInTimeRecoveryEnabled": false}
+      }
+    }
+  }
+}

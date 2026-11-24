@@ -1,0 +1,3 @@
+ARG NODE_MAJOR=16
+FROM node:${NODE_MAJOR}-alpine3.15
+WORKDIR /app
